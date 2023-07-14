@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container mt-4">
+		<h1 class="text-center">TABLA PRODUCTOS</h1>
+		<a th:href="@{/nuevoProducto}" class="btn btn-primary">Nuevo Registro</a> 
+		<a th:href="@{/}" class="btn btn-info">Volver</a><br><br>
+		<table class="table table-info table-hover table-bordered">
+			<thead class="table table-dark table-hover">
+				<tr>
+					<th>COD_PRO</th>
+					<th>COD_CAT</th>
+					<th>NOM_PRO</th>
+					<th>DES_PRO</th>
+					<th>PRE_PRO</th>
+					<th>ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto:${productos}">
+					<td th:text="${producto.COD_PRO}"></td>
+					<!-- para mostrar datos -->
+					<td th:text="${producto.COD_CAT}"></td>
+					<td th:text="${producto.NOM_PRO}"></td>
+					<td th:text="${producto.DES_PRO}"></td>
+					<td th:text="${producto.PRE_PRO}"></td>
+					<td><a th:href="@{/editarProducto/}+${producto.COD_PRO}" class="btn btn-warning">Editar</a> 
+						<a th:href="@{/borrarProducto/}+${producto.COD_PRO}" class="btn btn-danger">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
